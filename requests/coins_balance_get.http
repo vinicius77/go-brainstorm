@@ -1,0 +1,2 @@
+GET http://localhost:8000/account/coins/?username=vinicius 
+Authorization: 123ABCE
