@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi"
-	"github.com/gofiber/fiber/v2"
+	// "github.com/gofiber/fiber/v2"
 	log "github.com/sirupsen/logrus"
 	"github.com/vinicius77/go-brainstorm/internal/handlers"
 )
@@ -18,6 +18,12 @@ type Todo struct {
 }
 
 func main() {
+	/**
+	=== Uncomment that snippet to test Fiber ======
+
+	PS.: For obvious reasons running Fiber and Chi concurrently
+	triggers crazy stuff
+
 	log.SetReportCaller(true)
 	app := fiber.New()
 
@@ -61,7 +67,10 @@ func main() {
 		return c.JSON(todos)
 	})
 
-	log.Fatal(app.Listen(":4000"))
+	log.Fatal(app.Listen(":8000"))
+
+		=== Uncomment that snippet to test Fiber ======
+	*/
 
 	var router *chi.Mux = chi.NewRouter()
 	handlers.Handler(router)
@@ -69,7 +78,7 @@ func main() {
 	fmt.Println("Starting API service ...")
 	fmt.Println("Server listening at http://localhost:8000 ...")
 
-	err := http.ListenAndServe("localhost:8000", router)
+	err := http.ListenAndServe(":8000", router)
 
 	if err != nil {
 		log.Error(err)
