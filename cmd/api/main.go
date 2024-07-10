@@ -7,6 +7,7 @@ import (
 	"github.com/go-chi/chi"
 	// "github.com/gofiber/fiber/v2"
 	log "github.com/sirupsen/logrus"
+	"github.com/vinicius77/go-brainstorm/features"
 	"github.com/vinicius77/go-brainstorm/internal/handlers"
 )
 
@@ -18,6 +19,8 @@ type Todo struct {
 }
 
 func main() {
+
+	features.FeaturesCheck()
 	/**
 	=== Uncomment that snippet to test Fiber ======
 
